@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pnpm --filter @workspace/cybercrime-response-center run build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "artifacts/cybercrime-response-center/dist/public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
