@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Cybercrime Response Center"
+description = "A defensive cybercrime response website for reporting incidents, submitting evidence, triaging cases, and coordinating next steps through a focused analyst workspace."
+version = "1.0.0"
+id = "artifacts/cybercrime-response-center"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23351
+
+[services.development]
+run = "pnpm --filter @workspace/cybercrime-response-center run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cybercrime-response-center", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cybercrime-response-center/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23351"
+BASE_PATH = "/"
